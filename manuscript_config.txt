@@ -1,0 +1,43 @@
+
+#UNDERGROUND MODEL RELATED RESULTS
+
+Number of new underground reactions : 	543
+Number of new compounds:		311
+Number of value-added compounds:	209
+		- with KEGG id:		162
+		- without KEGG id:	47
+Number of value-added compounds in underground model: 	66
+Number of value-added compounds in native model:	51
+Number of cases with sufficiently increased yield:	5
+Number of cases with yield only in underground model:	4
+
+MILP results of underground model:
+	- 3-Hydroxypropanoate:	1
+	- D-tartrate:		1
+	- Ethyleneglycol:	1
+	- Butanol:		1
+	- Propan-2-ol:		2
+	- Methanol:		1
+	- Glycine:		2
+	- L-Lactate:		1
+	- (S)-Propane-1_2-diol:	1
+	- Glycerol:		4
+	- Formaldehyde:		1
+
+Growth-coupling KO numbers:
+	- glycerol:		5
+	- butanol: 		40
+	- D-tartrate:		11
+	- (S)-Propane-1,2-diol:	22
+	- L-lactate:		19
+	- 3-hydroxypropanoate:	12
+
+Number of overlapping reactions between heterologous and underground model: 80
+
+#HETEROLOGOUS MODEL RELATED RESULTS
+
+Number of value-added compounds in heterologous model: 	112
+Number of value-added compounds in native model:	51
+Number of cases with sufficiently increased yield:	16
+Number of cases with yield only in heterologous model:	37
+
