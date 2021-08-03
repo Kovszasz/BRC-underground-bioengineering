@@ -109,13 +109,13 @@ def yield_prediction(target,g,C_source,turned_on_underground_reactions):
     solution=cobra.flux_analysis.pfba(model)
     compound_yield=abs((solution.fluxes["DM_target"]/solution.fluxes[C_source])*(c_atom_number("DM_target")/c_atom_number(C_source)))
     print("Yield of ",target_metabol,":\t",abs(compound_yield))
-    #f=open('ug_meoh.txt','w')
-    #reaction_data={}
-    #for i in solution.fluxes.keys():
-    #    reaction_data[i]=solution.fluxes[i]
+    f=open('ethylene_glycol.txt','w')
+    reaction_data={}
+    for i in solution.fluxes.keys():
+        reaction_data[i]=solution.fluxes[i]
         #print(i,';',model.reactions.get_by_id(i).reaction,';',model.reactions.get_by_id(i).bounds,';',solution.fluxes[i])
-    #    f.write("{i};{reaction};{lb};{ub};{fl}\n".format(i=i,reaction=model.reactions.get_by_id(i).reaction,lb=model.reactions.get_by_id(i).lower_bound,ub=model.reactions.get_by_id(i).upper_bound,fl=solution.fluxes[i]))
-    #f.close()
+        f.write("{i};{reaction};{lb};{ub};{fl}\n".format(i=i,reaction=model.reactions.get_by_id(i).reaction,lb=model.reactions.get_by_id(i).lower_bound,ub=model.reactions.get_by_id(i).upper_bound,fl=solution.fluxes[i]))
+    f.close()
     #escher.Builder(map_name='Underground_u0228',map_json='underground_u0228_Map.json',model=model,reaction_data=reaction_data,local_host='http://localhost:7778/').save_html('Ug_u0228_escher.html')
     model.reactions.get_by_id(C_source).lower_bound=0
     model.remove_reactions(['DM_target'])
@@ -123,7 +123,7 @@ def yield_prediction(target,g,C_source,turned_on_underground_reactions):
 
 #------------------------------------------------------------RUN prediction---------------------------------------------------------------------------------
 
-carbon_sources=["EX_glc_e","EX_glyc_e","EX_xyl_D_e","EX_ac_e","EX_fru_e","EX_fuc_L_e","EX_arab_L_e","EX_succ_e"]
+carbon_sources=["EX_glc_e"]#,"EX_glyc_e","EX_xyl_D_e","EX_ac_e","EX_fru_e","EX_fuc_L_e","EX_arab_L_e","EX_succ_e"]
 
 #x={"id":["asp_D_c","abt_c","C01904_c","alein_c","ptrc_c"]}
 targets=[]
@@ -131,7 +131,7 @@ with open("native_target_compounds.txt") as target_compounds:
     for i in target_compounds:
         targets.append(white_space_remover(i))
 
-#targets=['C01380_c']
+targets=['C01380_c']
 def increment(x,y):
     if abs(x)<1e-4 and abs(y)<1e-4:
         return 0
@@ -151,7 +151,7 @@ for target in targets:
     columns=[]
     for carbon_source in carbon_sources:
         native=yield_prediction(target,biomass_constraint,carbon_source,[])
-        underground=yield_prediction(target,biomass_constraint,carbon_source,underground_reactions.keys())
+        underground=yield_prediction(target,biomass_constraint,carbon_source,['u0228'])#underground_reactions.keys())
         result[target][carbon_source]=[native,underground]
         columns.append(carbon_source+':native')
         columns.append(carbon_source+':underground')
@@ -166,7 +166,7 @@ for target in targets:
         row.append(underground)
         row.append(relative_yield)
     data.append(row)
-df = pandas.DataFrame(data,index=targets,columns=columns)
+#df = pandas.DataFrame(data,index=targets,columns=columns)
 #cobra.io.save_json_model(model,'underground_u0228.json')
-df.to_csv(r'results/underground_yield_results_all.txt', header=None, index=targets, sep=',', mode='a')
+#df.to_csv(r'results/underground_yield_results_all.txt', header=None, index=targets, sep=',', mode='a')
 #binary_saver(result, 'native_underground_comparison')
