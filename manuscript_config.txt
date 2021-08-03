@@ -9,7 +9,7 @@ Number of value-added compounds:	206
 		- with KEGG id:		162
 		- without KEGG id:	44
 Number of value-added compounds in underground model: 64 (native+underground)
-Number of value-added compounds in native model:	51
+Number of value-added compounds in native model:	49
 Number of cases with sufficiently increased yield:	5
 Number of cases with yield only in underground model:	4
 
@@ -37,7 +37,7 @@ Number of overlapping reactions between heterologous and underground model: 80
 #HETEROLOGOUS MODEL RELATED RESULTS
 
 Number of value-added compounds in heterologous model: 	110 (heterolgous+native)
-Number of value-added compounds in native model:	51
+Number of value-added compounds in native model:	49
 Number of cases with sufficiently increased yield:	18
 Number of cases with yield only in heterologous model:	34
 
