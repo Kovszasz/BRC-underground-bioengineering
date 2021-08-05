@@ -35,9 +35,14 @@ Growth-coupling KO numbers:
 Number of overlapping reactions between heterologous and underground model: 80
 
 #HETEROLOGOUS MODEL RELATED RESULTS
+Number of heterologous reactions:	5686
+Number of reactions:	8050
+Number of exchange reactions:	384
+Number of metabolites:	5538
+Number of new metabolites:	3495
+
 
 Number of value-added compounds in heterologous model: 	110 (heterolgous+native)
 Number of value-added compounds in native model:	49
 Number of cases with sufficiently increased yield:	18
 Number of cases with yield only in heterologous model:	34
-
